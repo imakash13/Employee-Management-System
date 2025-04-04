@@ -1,14 +1,15 @@
 const express = require("express");
 const Employee = require('../models/Employee');
 const upload = require('../middleware/upload');
+const authMiddleware = require("../middleware/authMiddleware");
 
 const router = express.Router();
 
-router.post('/add',upload.single("profileImage"), async (req,res)=>{
+router.post('/add',authMiddleware,upload.single("profileImage"), async (req,res)=>{
     try{
-        const {name,position,contact} = req.body;
+        const {firstName,lastName,position,contact} = req.body;
         const profileImage = req.file ? req.file.path : null;
-        const employee = new Employee({name,position,contact,profileImage});
+        const employee = new Employee({firstName,lastName,position,contact,profileImage});
         await employee.save();
         res.status(201).json({success:true,employee});
     }
@@ -38,10 +39,10 @@ router.get('/:id', async (req,res)=>{
 
 router.put('/:id', upload.single("profileImage"),async (req,res)=>{
     try{
-        const {name,position,contact} = req.body;
+        const {firstName,lastName,position,contact} = req.body;
         const profileImage = req.file?.path;
         const updatedEmployee = await Employee.findByIdAndUpdate(req.params.id,
-            {name,position,contact,profileImage}, {new:true});
+            {firstName,lastName,position,contact,profileImage}, {new:true});
         res.status(200).json(updatedEmployee);
     }
     catch(err){
