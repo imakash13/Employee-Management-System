@@ -53,6 +53,10 @@ const Login = () => {
           Login
         </button>
       </form>
+      <div className="first-time">
+        <h4>First time user SignUp here: </h4>
+        <button className="btn-primary" onClick={()=>navigate('/signup')}>SignUp</button>
+      </div>
     </div>
   );
 };

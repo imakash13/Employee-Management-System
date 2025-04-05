@@ -10,7 +10,7 @@ const EmployeeList = () => {
   useEffect(() => {
     axios.get("http://localhost:5000/api/employees", {
         headers: { Authorization: `Bearer ${token}` }
-    })
+    },[employees])
       .then((res) => setEmployees(res.data))
       .catch((err) => console.log(err.message));
   }, );

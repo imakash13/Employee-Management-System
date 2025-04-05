@@ -23,6 +23,20 @@ body {
     border-radius: 8px;
 }
 
+nav {
+    display: flex;
+    justify-content: space-around;
+    position: sticky;
+    top: 0;
+}
+
+a {
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: 600;
+    color: #333;
+}
+
 /* Headings */
 h2 {
     text-align: center;
@@ -34,6 +48,7 @@ form {
     display: flex;
     flex-direction: column;
     gap: 15px;
+    align-items: center;
 }
 
 input {
@@ -42,6 +57,7 @@ input {
     border-radius: 6px;
     font-size: 16px;
     transition: border 0.3s;
+    width: 50%;
 }
 
 input:focus {
@@ -121,6 +137,9 @@ button:hover {
 .auth-container {
     width: 400px;
     margin: auto;
+    position: absolute;
+    top: 25%;
+    left: 35%;
     padding: 30px;
     background: white;
     border-radius: 8px;
@@ -137,6 +156,16 @@ button:hover {
 .auth-container p {
     margin-top: 10px;
 }
+
+.first-time {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1rem;
+}
+ h4 {
+    display: flex;
+    align-items: center;
+ }
 
 /* Responsive Design */
 @media (max-width: 768px) {
